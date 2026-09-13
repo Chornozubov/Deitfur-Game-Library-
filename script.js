@@ -1,1 +1,1 @@
-if (condition) {
+if (condition)
