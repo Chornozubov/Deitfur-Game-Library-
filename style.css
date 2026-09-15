@@ -48,6 +48,22 @@ a {
   color: #6d4cc9;
 }
 
+.theme-button {
+  padding: 7px 10px;
+  border: 1px solid #514a5c;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #eeeaf3;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.theme-button:hover {
+  border-color: #6d4cc9;
+  color: #ffffff;
+}
+
 main {
   width: 80%;
   max-width: 1000px;
@@ -166,6 +182,56 @@ footer {
   background-color: #17151b;
   text-align: center;
   font-size: 13px;
+}
+
+body.light-theme {
+  color: #28242e;
+  background-color: #f5f2f8;
+}
+
+body.light-theme .header,
+body.light-theme footer {
+  background-color: #ffffff;
+  border-color: #d9d2e1;
+}
+
+body.light-theme .navigation a,
+body.light-theme .section-title p,
+body.light-theme .about p,
+body.light-theme .game-card p,
+body.light-theme footer {
+  color: #665d70;
+}
+
+body.light-theme .welcome {
+  background-color: #e9e1f3;
+}
+
+body.light-theme .welcome-text {
+  color: #554c60;
+}
+
+body.light-theme .game-card {
+  border-color: #d9d2e1;
+  background-color: #ffffff;
+}
+
+body.light-theme .game-image {
+  background-color: #d1c2e4;
+}
+
+body.light-theme .game-card:first-child .game-image {
+  background-color: #bba4dc;
+}
+
+body.light-theme .section-title,
+body.light-theme .about {
+  border-color: #d9d2e1;
+}
+
+body.light-theme .theme-button {
+  border-color: #b9aec6;
+  color: #28242e;
 }
 
 @media (max-width: 700px) {
