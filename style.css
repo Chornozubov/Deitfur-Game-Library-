@@ -9,8 +9,26 @@ html {
 body {
   margin: 0;
   color: #eeeaf3;
-  background-color: #1d1a22;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(155, 104, 246, 0.30), transparent 30%),
+    radial-gradient(circle at 88% 15%, rgba(77, 114, 235, 0.22), transparent 31%),
+    radial-gradient(circle at 72% 85%, rgba(198, 93, 214, 0.18), transparent 28%),
+    radial-gradient(circle at 20% 92%, rgba(73, 149, 223, 0.14), transparent 26%),
+    linear-gradient(135deg, #16141d, #211b2d 48%, #181720);
+  background-size: 150% 150%;
+  animation: background-flow 22s ease-in-out infinite;
   font-family: Arial, sans-serif;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+@keyframes background-flow {
+  0%, 100% {
+    background-position: 0% 20%;
+  }
+
+  50% {
+    background-position: 100% 80%;
+  }
 }
 
 a {
@@ -26,6 +44,7 @@ a {
   justify-content: space-between;
   background-color: #17151b;
   border-bottom: 1px solid #332e3b;
+  transition: background-color 0.35s ease, border-color 0.35s ease;
 }
 
 .logo {
@@ -36,32 +55,105 @@ a {
 
 .navigation {
   display: flex;
-  gap: 24px;
+  align-items: center;
+  gap: 6px;
+  padding: 5px;
+  border: 1px solid rgba(130, 106, 172, 0.24);
+  border-radius: 999px;
+  background: rgba(25, 22, 32, 0.62);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.04), 0 8px 24px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(10px);
 }
 
 .navigation a {
-  color: #aaa3b2;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 13px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: #b8b0c1;
   font-size: 14px;
+  font-weight: 600;
+  transition: color 0.22s ease, background-color 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
 }
 
 .navigation a:hover {
-  color: #6d4cc9;
+  border-color: rgba(150, 117, 228, 0.45);
+  background-color: rgba(109, 76, 201, 0.16);
+  color: #f2ecff;
+  transform: translateY(-1px);
+}
+
+.navigation a:focus-visible {
+  outline: 2px solid #9a7bea;
+  outline-offset: 2px;
+}
+
+.navigation a[aria-current="page"] {
+  border-color: rgba(150, 117, 228, 0.42);
+  background: linear-gradient(135deg, #7652d3, #5c3daf);
+  box-shadow: 0 4px 14px rgba(89, 55, 180, 0.42);
+  color: #ffffff;
 }
 
 .theme-button {
-  padding: 7px 10px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px;
   border: 1px solid #514a5c;
-  border-radius: 5px;
+  border-radius: 999px;
   background-color: transparent;
   color: #eeeaf3;
   font: inherit;
-  font-size: 13px;
   cursor: pointer;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
 }
 
 .theme-button:hover {
   border-color: #6d4cc9;
-  color: #ffffff;
+  background-color: #2c2637;
+}
+
+.theme-button:focus-visible {
+  outline: 2px solid #8b6ce0;
+  outline-offset: 3px;
+}
+
+.theme-icon {
+  width: 18px;
+  color: #aaa3b2;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.theme-icon-moon {
+  color: #d7c8ff;
+}
+
+.theme-toggle {
+  position: relative;
+  width: 38px;
+  height: 20px;
+  border-radius: 999px;
+  background-color: #44395a;
+  transition: background-color 0.3s ease;
+}
+
+.theme-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 main {
@@ -75,6 +167,7 @@ main {
   padding: 80px 50px;
   border-radius: 10px;
   background: #2c2637;
+  transition: background-color 0.35s ease;
 }
 
 .small-title {
@@ -146,11 +239,13 @@ h2 {
   border: 1px solid #3b3544;
   border-radius: 8px;
   background-color: #28242e;
+  transition: background-color 0.35s ease, border-color 0.35s ease, transform 0.25s ease;
 }
 
 .game-image {
   height: 130px;
   background-color: #44395a;
+  transition: background-color 0.35s ease;
 }
 
 .game-card:first-child .game-image {
@@ -182,17 +277,44 @@ footer {
   background-color: #17151b;
   text-align: center;
   font-size: 13px;
+  transition: background-color 0.35s ease, color 0.35s ease;
 }
 
 body.light-theme {
   color: #28242e;
-  background-color: #f5f2f8;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(181, 135, 246, 0.34), transparent 30%),
+    radial-gradient(circle at 88% 15%, rgba(120, 166, 255, 0.26), transparent 31%),
+    radial-gradient(circle at 72% 85%, rgba(239, 157, 230, 0.24), transparent 28%),
+    radial-gradient(circle at 20% 92%, rgba(125, 203, 235, 0.20), transparent 26%),
+    linear-gradient(135deg, #f8f5fb, #eee8f6 48%, #f6f8ff);
+  background-size: 150% 150%;
 }
 
 body.light-theme .header,
 body.light-theme footer {
   background-color: #ffffff;
   border-color: #d9d2e1;
+}
+
+body.light-theme .navigation {
+  border-color: rgba(119, 98, 152, 0.22);
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.9), 0 8px 24px rgba(74, 51, 106, 0.10);
+}
+
+body.light-theme .navigation a {
+  color: #62586d;
+}
+
+body.light-theme .navigation a:hover {
+  border-color: rgba(109, 76, 201, 0.32);
+  background-color: rgba(109, 76, 201, 0.10);
+  color: #472b91;
+}
+
+body.light-theme .navigation a[aria-current="page"] {
+  color: #ffffff;
 }
 
 body.light-theme .navigation a,
@@ -234,9 +356,50 @@ body.light-theme .theme-button {
   color: #28242e;
 }
 
+body.light-theme .theme-button:hover {
+  background-color: #ffffff;
+}
+
+body.light-theme .theme-icon-sun {
+  color: #db8d11;
+  transform: rotate(30deg);
+}
+
+body.light-theme .theme-icon-moon {
+  color: #9e95a8;
+}
+
+body.light-theme .theme-toggle {
+  background-color: #b28ae3;
+}
+
+body.light-theme .theme-thumb {
+  background-color: #ffffff;
+  transform: translateX(18px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
 @media (max-width: 700px) {
   .header {
-    padding: 0 7%;
+    padding: 14px 7%;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .navigation {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 12px;
   }
 
   main {

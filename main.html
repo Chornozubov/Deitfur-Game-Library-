@@ -11,10 +11,14 @@
     <a class="logo" href="#home">Deitfur</a>
 
     <nav class="navigation">
-      <a href="#home">Home</a>
-      <a href="#games">Games</a>
-      <a href="#about">About</a>
-      <button class="theme-button" id="themeButton" type="button" aria-label="Switch to light theme">☀️ Light theme</button>
+      <a class="nav-link" href="#home" aria-current="page">Home</a>
+      <a class="nav-link" href="#games">Games</a>
+      <a class="nav-link" href="#about">About</a>
+      <button class="theme-button" id="themeButton" type="button" aria-label="Switch to light theme" aria-pressed="false">
+        <span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span>
+        <span class="theme-toggle" aria-hidden="true"><span class="theme-thumb"></span></span>
+        <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
+      </button>
     </nav>
   </header>
 
