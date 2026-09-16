@@ -1,3 +1,5 @@
+console.log(games[0].name);
+console.log(games[1].genre);
 const games = [
   { name: "Dota 2", genre: "MOBA", releaseYear: 2013 },
   { name: "Counter-Strike: Global Offensive", genre: "FPS", releaseYear: 2012 },
@@ -47,4 +49,4 @@ console.log(releaseYears);
 const uniqueGenres = [...new Set(genres)];
 console.log(uniqueGenres);
 const sortedByName = [...games].sort((a, b) => a.name.localeCompare(b.name));
-console.log(sortedByName);
+console.log(sortedByName); 
