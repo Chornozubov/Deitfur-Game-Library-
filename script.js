@@ -1,14 +1,14 @@
 const defaultGames = [
-  { name: "Dota 2", genre: "MOBA", releaseYear: 2013 },
-  { name: "Counter-Strike: Global Offensive", genre: "FPS", releaseYear: 2012 },
-  { name: "The Witcher 3: Wild Hunt", genre: "RPG", releaseYear: 2015 },
-  { name: "Elden Ring", genre: "Action/RPG", releaseYear: 2022 },
-  { name: "The Forest", genre: "Survival", releaseYear: 2018 },
-  { name: "Red Dead Redemption 2", genre: "Action/Adventure", releaseYear: 2018 },
-  { name: "Detroit: Become Human", genre: "Interactive Drama", releaseYear: 2018 },
-  { name: "Car Mechanic Simulator", genre: "Simulation", releaseYear: 2018 },
-  { name: "CS:GO", genre: "FPS", releaseYear: 2012 },
-  { name: "Valheim", genre: "Survival", releaseYear: 2021 },
+  { id: 1, name: "Dota 2", genre: "MOBA", releaseYear: 2013 },
+  { id: 2, name: "Counter-Strike: Global Offensive", genre: "FPS", releaseYear: 2012 },
+  { id: 3, name: "The Witcher 3: Wild Hunt", genre: "RPG", releaseYear: 2015 },
+  { id: 4, name: "Elden Ring", genre: "Action/RPG", releaseYear: 2022 },
+  { id: 5, name: "The Forest", genre: "Survival", releaseYear: 2018 },
+  { id: 6, name: "Red Dead Redemption 2", genre: "Action/Adventure", releaseYear: 2018 },
+  { id: 7, name: "Detroit: Become Human", genre: "Interactive Drama", releaseYear: 2018 },
+  { id: 8, name: "Car Mechanic Simulator", genre: "Simulation", releaseYear: 2018 },
+  { id: 9, name: "CS:GO", genre: "FPS", releaseYear: 2012 },
+  { id: 10, name: "Valheim", genre: "Survival", releaseYear: 2021 },
 ];
 
 const savedGames = localStorage.getItem("games");
@@ -20,6 +20,9 @@ function saveGames() {
 }
 games.forEach((game, index) => {
   console.log(`${index + 1}. Game: "${game.name}" | genre: ${game.genre} | releaseYear: ${game.releaseYear}`);
+});
+games.forEach(function(game) {
+  console.log(game.id, game.name);
 });
 
 function getGamesByYear(year) {
@@ -62,6 +65,9 @@ const sortedByName = [...games].sort((a, b) =>
   a.name.localeCompare(b.name)
 );
 console.log(sortedByName);
+
+const sortedByReleaseYear = [...games].sort((a, b) => a.releaseYear - b.releaseYear);
+console.log(sortedByReleaseYear);
 
 function addGame(game) {
   games.push(game);
