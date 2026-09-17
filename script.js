@@ -70,6 +70,7 @@ const sortedByReleaseYear = [...games].sort((a, b) => a.releaseYear - b.releaseY
 console.log(sortedByReleaseYear);
 
 function addGame(game) {
+
   games.push(game);
   saveGames();
 }
