@@ -70,7 +70,25 @@ const sortedByReleaseYear = [...games].sort((a, b) => a.releaseYear - b.releaseY
 console.log(sortedByReleaseYear);
 
 function addGame(game) {
-
   games.push(game);
-  saveGames();
+  saveGames()
+  renderGames();   
 }
+const gamelist = document.getElementById("game-list");
+
+function renderGames() {
+  gamelist.innerHTML = "";
+
+  games.forEach(function(game) {
+    const gameCardHTML = `
+      <div>
+        <h3>${game.name}</h3>
+        <p>${game.genre}</p>
+        <p>${game.releaseYear}</p>
+      </div>
+    `;
+    gamelist.innerHTML += gameCardHTML;
+  });
+}
+
+renderGames();
