@@ -15,12 +15,15 @@ const savedGames = localStorage.getItem("games");
 const games = savedGames
   ? JSON.parse(savedGames)
   : defaultGames;
+
 function saveGames() {
   localStorage.setItem("games", JSON.stringify(games));
 }
+
 games.forEach((game, index) => {
   console.log(`${index + 1}. Game: "${game.name}" | genre: ${game.genre} | releaseYear: ${game.releaseYear}`);
 });
+
 games.forEach(function(game) {
   console.log(game.id, game.name);
 });
@@ -71,24 +74,56 @@ console.log(sortedByReleaseYear);
 
 function addGame(game) {
   games.push(game);
-  saveGames()
-  renderGames();   
+  saveGames();
+  renderGames();
 }
+
 const gamelist = document.getElementById("game-list");
+
+function createGameCard(game) {
+  return `
+    <div class="game-card">
+      <h3>${game.name}</h3>
+      <p>Genre: ${game.genre}</p>
+      <p>Year: ${game.releaseYear}</p>
+    </div>
+  `;
+}
 
 function renderGames() {
   gamelist.innerHTML = "";
 
   games.forEach(function(game) {
-    const gameCardHTML = `
-      <div>
-        <h3>${game.name}</h3>
-        <p>${game.genre}</p>
-        <p>${game.releaseYear}</p>
-      </div>
-    `;
-    gamelist.innerHTML += gameCardHTML;
+    gamelist.innerHTML += createGameCard(game);
+  });
+}
+renderGames();
+
+const searchInput = document.getElementById("search-input");
+const genreFilter = document.getElementById("genre-filter");
+
+function renderFilteredGames(filteredGames) {
+  gamelist.innerHTML = "";
+  filteredGames.forEach(function(game) {
+    gamelist.innerHTML += createGameCard(game);
   });
 }
 
-renderGames();
+function applyFilters() {
+  const query = searchInput.value.trim().toLowerCase();
+  const selectedGenre = genreFilter.value;
+
+  const filteredGames = games.filter(game => {
+
+    const matchesQuery = !query || game.name.toLowerCase().includes(query);
+    const matchesGenre = selectedGenre === "all" || game.genre === selectedGenre;
+    return matchesQuery && matchesGenre;
+  });
+
+  renderFilteredGames(filteredGames);
+}
+uniqueGenres.forEach(function(genre) {
+  genreFilter.innerHTML += `<option value="${genre}">${genre}</option>`;
+});
+searchInput.addEventListener("input", applyFilters);
+genreFilter.addEventListener("change", applyFilters);
